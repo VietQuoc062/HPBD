@@ -1,0 +1,67 @@
+<html>
+<head>
+    <title>Chúc mừng sinh nhật phiên bản Dev Web - Tunna Dương</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="assets/images/favicon.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="assets/css/style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="main_container">
+        <div class="intro-box">
+            <div class="intro-icon">🎁</div>
+            <h1>Giả bộ làm theo để xem điều bất ngờ</h1>
+            <!-- <p>Có một lời nhắn đặc biệt đang chờ bạn khám phá.</p> -->
+            
+            <button type="button" id="show-form-btn" class="btn btn-primary btn-lg btn-pulse">
+                Click vào đây đi :3
+            </button>
+
+            <div id="form-section">
+                <img id="figureImage" src="assets/images/one.gif" width="250">
+                <input type="text" id="nhapngaysinh" class="form-control" placeholder="Viết ngày sinh của người sinh ngày 15/11/2003">
+                <button type="button" id="submit-btn" class="btn btn-success btn-lg">
+                    Tiếp tục
+                </button>
+            </div>
+            </div>
+
+        <div id="error-box" style="display:none; text-align:center; margin-top:20px;">
+            <img src="assets/images/angry.gif" width="200" style="margin-bottom:10px;">
+            <p style="color:red; font-size:18px; font-weight:bold;">Sai rồi á 😠 Nhập lại đi!</p>
+        </div>
+
+    </div>
+
+    <div id="ascii-screen"></div>
+
+    <div id="finale-card-screen" class="screen">
+        <div class="card">
+            <h1>Gửi chị Quý Nhi</h1>
+            <h2>🎂 Chúc mừng sinh nhật nha! 🎂</h2>
+            
+            <div class="image-container">
+                <img src="assets/images/image1.jpg" alt="Ảnh" class="birthday-image">
+            </div>
+                        
+            <p class="wish-message">
+                Hết rồi đó aaaaaaaaaaaaaaa 
+            </p>
+            <p class="wish-message">
+                <strong>✨ Happy Birthday 22 tủi ✨</strong>
+            </p>
+        </div>
+    </div>
+
+    <audio id="background-music" loop src="music/birthday.mp3"></audio>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script src="assets/js/script.js"></script> 
+</body>
+</html>
