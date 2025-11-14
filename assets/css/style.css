@@ -134,20 +134,29 @@ body {
     height: 100%;
     background: black;
     color: white;
-    font-family: "Courier New", monospace;
-    overflow-y: auto;
-    overflow-x: auto;
+    overflow: auto; /* Cho phép cuộn cả ngang và dọc */
     padding: 10px;
     display: none;
     z-index: 100;
     box-sizing: border-box;
 }
 
-#ascii-screen p {
+/* 🔥 THAY THẾ TOÀN BỘ style cho 'p' bằng 'pre' */
+#ascii-screen pre {
     color: white;
-    white-space: pre-wrap; /* auto wrap cho mobile */
+    font-family: "Courier New", monospace;
     margin: 0;
-    font-size: 8px; /* nhỏ hơn để vừa màn hình */
+    font-size: 8px; /* Kích thước nhỏ nhưng dễ đọc */
+    line-height: 1.1;
+/* (white-space: pre; là mặc định của thẻ <pre>) */
+}
+
+/* Thu nhỏ hơn một chút cho màn hình siêu nhỏ */
+@media (max-width: 480px) {
+      #ascii-screen pre {
+            font-size: 6px; 
+            line-height: 1.0;
+      }
 }
 
 /* Responsive ASCII font-size */
@@ -270,4 +279,23 @@ body {
     .card .wish-message {
         font-size: 1em;
     }
+}
+
+/* ===== HIỆU ỨNG RUNG KHI HOVER CHỮ ===== */
+
+/* 1. Định nghĩa animation rung lắc nhẹ */
+@keyframes shake-little {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-1px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, 0px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* 2. Áp dụng animation đó khi hover vào các chữ trong thiệp */
+.card h1:hover,
+.card h2:hover,
+.card .wish-message:hover {
+  animation: shake-little 0.3s linear infinite; /* Chạy animation */
+  cursor: pointer; /* Đổi con trỏ chuột để thêm cảm giác tương tác */
 }

@@ -52,6 +52,9 @@ function checkValid() {
 
 async function showImage(imgName) {
     asciiScreen.style.display = 'block';
+    
+    // Dọn dẹp nội dung cũ trước khi chạy
+    asciiScreen.innerHTML = ''; 
 
     backgroundMusic.play().catch(e => console.error("Không thể phát nhạc:", e));
 
@@ -61,11 +64,15 @@ async function showImage(imgName) {
         const newData = data.replace(/ /g, "&nbsp;");
         const lines = newData.split("\n");
         
+        // Tạo một thẻ <pre> duy nhất
+        const pre = document.createElement('pre');
+        asciiScreen.appendChild(pre);
+
         for (var line = 0; line < lines.length; line++) {
-            const p = document.createElement('p');
-            p.innerHTML = lines[line];
-            asciiScreen.appendChild(p); 
+            // Nối từng dòng vào thẻ <pre>
+            pre.innerHTML += lines[line] + '\n';
             
+            // Cuộn xuống
             asciiScreen.scrollTop = asciiScreen.scrollHeight; 
             
             await sleep(50); 
@@ -76,7 +83,8 @@ async function showImage(imgName) {
 
     } catch (err) {
         console.error("Lỗi khi tải file ASCII:", err);
-        asciiScreen.innerHTML = "<p>Không thể tải được file text.</p>";
+        // Cập nhật lỗi cho nhất quán
+        asciiScreen.innerHTML = "<pre>Không thể tải được file text.</pre>";
     }
 }
 
