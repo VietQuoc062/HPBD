@@ -151,11 +151,14 @@ body {
 }
 
 /* Responsive ASCII font-size */
-@media (max-width: 600px) {
+@media (max-width: 480px) {
     #ascii-screen p {
-        font-size: 6px;
+        font-size: 3px;       /* cực nhỏ để vừa màn hình */
+        white-space: pre;     /* vẫn giữ khoảng trắng, không wrap */
+        line-height: 3px;
     }
 }
+
 
 /* ===== FINAL CARD SCREEN ===== */
 .screen {
