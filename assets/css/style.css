@@ -1,129 +1,36 @@
-/* ===== CODE GỐC CỦA BẠN ===== */
+/* ===== BODY & BACKGROUND ===== */
 body {
-    /* Nhớ thay ảnh nền của bạn */
-    background: url("../images/bg.jpg") no-repeat center center fixed;
+    background: url("../images/bg.jpg") no-repeat center center;
     background-size: cover;
-    font-family: 'Quicksand', sans-serif; 
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
+/* Tránh fixed background lag trên mobile */
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+    }
+}
+
+/* ===== MAIN CONTAINER ===== */
 .main_container {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Đảm bảo full màn hình */
-    padding: 20px; 
+    flex-direction: column; /* cho mobile */
+    min-height: 100vh; /* thay height cố định */
+    padding: 20px;
     box-sizing: border-box;
 }
 
-/* ===== CODE CSS TỪ PROJECT CŨ + THÊM MỚI ===== */
-
-/* Màn hình chạy ASCII */
-#ascii-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    color: white;
-    font-family: "Courier New", monospace;
-    overflow-y: auto;
-    overflow-x: auto; /* <-- THAY ĐỔI 1: THÊM CUỘN NGANG */
-    padding: 10px;
-    display: none; /* Ẩn đi lúc đầu */
-    z-index: 100;
-    box-sizing: border-box; /* Thêm để padding không làm tràn */
-}
-
-#ascii-screen p {
-    color: white;
-    white-space: nowrap; /* Giữ nguyên để ASCII không bị vỡ dòng */
-    margin: 0;
-    font-size: 10px; /* <-- THAY ĐỔI 2: ĐẶT FONT-SIZE CỐ ĐỊNH HỢP LÝ */
-}
-
-/* Lớp screen chung (cho thiệp) */
-.screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    z-index: -1;
-    pointer-events: none;
-    transition: opacity 0.5s ease-in-out;
-    overflow: auto; 
-}
-
-/* Lớp .visible để hiện thiệp lên */
-.screen.visible {
-    opacity: 1;
-    z-index: 110; 
-    pointer-events: auto;
-}
-
-/* Toàn bộ CSS cho tấm thiệp */
-.card {
-    background: rgba(255, 255, 255, 0.95);
+/* ===== INTRO BOX ===== */
+.intro-box {
+    background: rgba(255, 255, 255, 0.92);
     padding: 30px 40px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    width: 90%;
-    max-width: 500px;
-    margin: 20px 0;
-}
-
-.card h1 {
-    font-family: 'Dancing Script', cursive;
-    font-size: 3em;
-    color: #d9006c;
-    margin: 0;
-}
-
-.card h2 {
-    font-size: 1.5em;
-    color: #b17ee9;
-    margin: 10px 0;
-}
-
-.card h3 {
-    font-size: 1.1em;
-    font-weight: 600;
-    color: #555;
-    margin: 15px 0;
-}
-
-.card .wish-message {
-    font-size: 1.1em;
-    line-height: 1.6;
-    color: #444;
-}
-
-.image-container {
-    width: 100%;
-    margin: 20px 0;
-}
-
-.birthday-image {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-/* ===== BỔ SUNG LÀM ĐẸP "KHÚC ĐẦU" ===== */
-          
-.intro-box {
-    background: rgba(255, 255, 255, 0.92); 
-    padding: 30px 40px;
-    border-radius: 20px; 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
     text-align: center;
     max-width: 500px;
     width: 100%;
@@ -131,13 +38,13 @@ body {
 
 .intro-icon {
     font-size: 4em;
-    animation: bounce 2s infinite; 
+    animation: bounce 2s infinite;
 }
 
 .intro-box h1 {
-    font-family: 'Dancing Script', cursive; 
+    font-family: 'Dancing Script', cursive;
     font-size: 2.8em;
-    color: #d9006c; 
+    color: #d9006c;
     margin-top: 0;
     margin-bottom: 10px;
 }
@@ -148,36 +55,15 @@ body {
     margin-bottom: 30px;
 }
 
-/* 1. Ẩn form đi lúc đầu */
-#form-section {
-    display: none;
-    margin-top: 30px; 
-}
-
-/* 2. Style cho các mục trong form */
-#form-section #figureImage {
-    margin-bottom: 15px;
-}
-#form-section #nhapngaysinh {
-    margin-bottom: 25px;
-    text-align: center; 
-    font-size: 1.1em;
-}
-
-/* 3. Style cho nút "Tiếp tục" */
-#form-section #submit-btn {
-    width: 100%;
-    font-weight: 600;
-}
-
-/* Nâng cấp nút bấm "Click vào đây" */
+/* ===== BUTTONS ===== */
 .intro-box .btn-primary {
-    background-color: #ff69b4; 
+    background-color: #ff69b4;
     border-color: #ff69b4;
     font-weight: 600;
     padding: 12px 30px;
     transition: transform 0.2s;
 }
+
 .intro-box .btn-primary:hover {
     background-color: #d9006c;
     border-color: #d9006c;
@@ -211,29 +97,174 @@ body {
     60% { transform: translateY(-10px); }
 }
 
-#finale-card-screen .card {
-    position: relative;
-    padding: 20px;
-    text-align: center;
-    z-index: 2;
+/* ===== FORM SECTION ===== */
+#form-section {
+    display: none;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 400px;
 }
 
-.birthday-image {
-    max-width: 100%;
-    max-height: 380px;  /* giới hạn chiều cao để không che chữ */
-    object-fit: cover;
-    border-radius: 15px;
-    display: block;
-    margin: 0 auto;
+#form-section #figureImage {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+#form-section #nhapngaysinh {
+    width: 100%;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 1.1em;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#form-section #submit-btn {
+    width: 100%;
+    font-weight: 600;
+    padding: 12px;
+}
+
+/* ===== ASCII SCREEN ===== */
+#ascii-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    color: white;
+    font-family: "Courier New", monospace;
+    overflow-y: auto;
+    overflow-x: auto;
+    padding: 10px;
+    display: none;
+    z-index: 100;
+    box-sizing: border-box;
+}
+
+#ascii-screen p {
+    color: white;
+    white-space: pre-wrap; /* auto wrap cho mobile */
+    margin: 0;
+    font-size: 8px; /* nhỏ hơn để vừa màn hình */
+}
+
+/* Responsive ASCII font-size */
+@media (max-width: 600px) {
+    #ascii-screen p {
+        font-size: 6px;
+    }
+}
+
+/* ===== FINAL CARD SCREEN ===== */
+.screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+    overflow: auto;
+}
+
+.screen.visible {
+    opacity: 1;
+    z-index: 110;
+    pointer-events: auto;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+    margin: 20px 0;
+}
+
+.card h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3em;
+    color: #d9006c;
+    margin: 0;
+}
+
+.card h2 {
+    font-size: 1.5em;
+    color: #b17ee9;
+    margin: 10px 0;
+}
+
+.card .wish-message {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #444;
 }
 
 .image-container {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    width: 100%;
+    margin: 20px 0;
 }
 
-#finale-card-screen h1,
-#finale-card-screen h2 {
-    position: relative;
-    z-index: 10;   /* chữ nằm trên cùng */
+.birthday-image {
+    max-width: 90%;
+    height: auto;
+    border-radius: 15px;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+    max-height: 380px; /* tránh che chữ */
+}
+
+/* ===== ERROR BOX ===== */
+#error-box img {
+    max-width: 80%;
+}
+
+#error-box p {
+    font-size: 1em;
+    color: red;
+    font-weight: bold;
+}
+
+/* ===== MEDIA QUERIES CHUNG ===== */
+@media (max-width: 480px) {
+    .intro-box h1 {
+        font-size: 2em;
+    }
+
+    .intro-icon {
+        font-size: 3em;
+    }
+
+    #form-section #nhapngaysinh {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+
+    #form-section #submit-btn {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+
+    .card h1 {
+        font-size: 2em;
+    }
+
+    .card h2 {
+        font-size: 1.2em;
+    }
+
+    .card .wish-message {
+        font-size: 1em;
+    }
 }
